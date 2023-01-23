@@ -425,7 +425,7 @@ def train_model(
 
     print(run_cmd)
     # Run the command
-    subprocess.run(run_cmd)
+    subprocess.run(run_cmd,cwd="/root/content/kohya_ss/")
 
     # check if output_dir/last is a folder... therefore it is a diffuser model
     last_dir = pathlib.Path(f'{output_dir}/{output_name}')
