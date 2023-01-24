@@ -346,7 +346,7 @@ def train_model(
     lr_warmup_steps = round(float(int(lr_warmup) * int(max_train_steps) / 100))
     print(f'lr_warmup_steps = {lr_warmup_steps}')
 
-    run_cmd = f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "/root/content/kohya_ss/train_network.py"'
+    run_cmd = f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_network.py"'
     if v2:
         run_cmd += ' --v2'
     if v_parameterization:
@@ -425,8 +425,7 @@ def train_model(
 
     print(run_cmd)
     # Run the command
-#     subprocess.run(run_cmd)
-    subprocess.run("ls")
+    subprocess.run(run_cmd,shell=True)
     
     # check if output_dir/last is a folder... therefore it is a diffuser model
     last_dir = pathlib.Path(f'{output_dir}/{output_name}')
